@@ -96,7 +96,7 @@ B.E. (Hons.) in Electrical Engineering          Aug 1999 - Jul 2003
 <ul>
   <li>Contributing to 5G-Advanced (Rel 18/19) feature enhancements for Marvell <a href="https://www.marvell.com/products/data-processing-units.html">OCTEON 5G Baseband DSP</a> products : such as 128 CSI-RS ports upgrade, 
     various beam compression methods using SRS channel to 8/12 layers, AI/ML based CSI prediction for high mobility and enhanced energy saving. Performed performance, power tradeoffs with various architectural options, accelerator usage, RU-DU splits and channel conditions. 
-    Various transformer and LSTM based approaches were compared for CSI prediction in high mobility scenarios.  
+    Various transformer and LSTM based approaches were compared for CSI prediction in high mobility scenarios, considering revised Octeon 10 ML Engine architecture.  
     Performed system simulations in Matlab/C/Python, extensive profiling and fixed point analysis during various design phases. </li>
 </ul>
 <a href="https://www.intel.com/content/www/us/en/research/overview.html"><b>Intel Labs</b></a>, Santa Clara -- Systems, Software and Architecture Org<br>
@@ -107,7 +107,7 @@ B.E. (Hons.) in Electrical Engineering          Aug 1999 - Jul 2003
 Variational Inference (VI) and Markov Chain Monte Carlo (MCMC) techniques.  
 Championed Expectation Propagation based MIMO demodulation and characterized its performance+complexity for <a href="https://www.intel.com/content/www/us/en/developer/topic-technology/edge-5g/tools/flexran.html">Intel FlexRAN</a>. 
   Developed AVX512 vectorized implementation of EP algorithm for 3GPP 5GNR PUSCH and PUCCH receiver processing pipelines, evaluated in Skylake Xeon and was adopted in FlexRAN. 
-  This improved BLER performance by upto ~2.5 dB, BER by 5 dB in various scenarios with 2.3x complexity of MMSE solution. Performed extensive analysis of correlation metrics considering MIMO channel propagation for dynamic switching of EP.  
+  This improved BLER performance by upto ~2.5 dB, BER by 5 dB in various scenarios with 2.3x complexity of MMSE solution, which was presented to Ericsson teams. Performed extensive analysis of correlation metrics considering MIMO channel propagation for dynamic switching of EP.  
   Proposed Softmax acceleration for improving EP and NLP architectures in Intel GNA accelerator roadmap. Evaluated EP based demodulation and Mean Field (MF) based channel estimation for different RU-DU split (7-2) architectures. Co-author and inventor of <a href="https://ieeexplore.ieee.org/document/9500309">Metropolis-Hastings Gradient Descent</a>, which combined MCMC and 
 Gradient descent techniques to enable superior performance at low complexity, winning ICC 2021 Best Paper Award in Machine Learning for Communications Track. Liaison for various NSF and Intel sponsored 
 university research programs such as <a href="https://new.nsf.gov/funding/opportunities/mlwins-nsfintel-partnership-machine-learning-wireless-networking/505687/nsf19-591">MLWiNS</a> and <a href="https://new.nsf.gov/funding/opportunities/rings-resilient-intelligent-nextg-systems">RINGS</a>. 
@@ -128,12 +128,13 @@ program to build a <a href="https://www.economist.com/science-and-technology/202
 <b>Staff Systems Researcher</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oct 2014 - Aug 2018<br>
 <ul>
   <li>3GPP NTN: Research and System design for <a href="https://oneweb.net/">Oneweb Low Earth Orbit</a> (LEO) Satellite Communication Systems - I worked on the design and analysis of Reverse link channels 
-primarily on User Terminals. This was an adaptation of LTE air interface with single carrier waveforms enabling Satellite to Ground communication in Ka, Ku bands, 
-which eventually got standardized as part of <a href="https://www.3gpp.org/technologies/ntn-overview">3GPP Non-Terrestrial Networks</a> (NTN) Standards. 
+primarily on User Terminals. Doppler and timing alignments, revised MCS, increased HARQ and transmit code blocks were some of the salient aspects. This was an adaptation of LTE air interface with single carrier waveforms enabling Satellite to Ground communication in Ka, Ku bands, 
+which eventually got standardized as part of <a href="https://www.3gpp.org/technologies/ntn-overview">3GPP Non-Terrestrial Networks</a> (NTN) Standards. Oneweb acquired by Eutelsat is now operational in various parts of the world.
 </li>
 <li>3GPP LTE+5GNR R&D: Contributed to Research & Design for Non-linear 
 Interference Cancellation for Carrier aggregation usecases in LTE and 5G NR systems. Such carrier aggregation caused receiver desense due to harmonics and 
-intermods within the receiver bands, which were digitally removed using digital self interference cancellation mechanisms. These designs were 
+intermods within the receiver bands, which were digitally removed using digital self interference cancellation mechanisms. Volterra based kernels were generated based on the transmitted signals on 1 or 2 carriers and cancelled at the receiver chain after accounting for
+  gain changes, phase offsets and timing delays in the TX-RX chains. These designs were 
 commercialized in various Qualcomm <a href="https://www.qualcomm.com/products/technology/modems/snapdragon-modems-4g-lte-x12">Snapdragon Modem chipsets</a> between 2014 and 2017, used by Apple, Samsung, LG etc..  
   Closely partnered with Apple teams to deliver ~18 dB performance improvement and dynamic switching of NLIC feature. Resolved several complex system issues with TX carrier aggregation generating Inter-mod distortions.
   </li>
@@ -143,8 +144,9 @@ commercialized in various Qualcomm <a href="https://www.qualcomm.com/products/te
 <b>Senior Engineer</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dec 2004 - Mar 2006<br>
 <ul>
 <li>3GPP GSM-EDGE DSP: Responsible for Research, Design of Interference Cancellation algorithms for 2G/3G Communication systems. Lead the Single antenna interference cancellation (SAIC) 
-design and development for GSM/GPRS/EDGE chipsets of Samsung using <a href="https://www.ceva-ip.com/">Ceva Teak and Teaklite 3</a> DSP. Contributed to various 
-stages of product design from algorithm research, design and extensive DSP assembly programming, Inter-Operability testing and Field testing with KDDI network partners. Gained experience with fading channel emulators, 
+design and development for GSM/GPRS/EDGE chipsets of Samsung using <a href="https://www.ceva-ip.com/">Ceva Teak and Teaklite 3</a> DSP. SAIC projects the 1-dimensional GMSK modulated signal in a direction orthogonal to interference within 2-dimensional channel, and removes Co-channel and adjacent channel interference. 
+  This was achieved with a MMSE based FFE-DFE structure with 10 tap filters and Cholesky based matrix inversion. 
+  Contributed to various stages of product design from algorithm research, design and extensive DSP assembly programming, Inter-Operability testing and Field testing with KDDI network partners. Gained experience with fading channel emulators, 
 signal analyzers, Rohde-Schwarz CMU200 and Anritsu testers. Optimized various algorithms to meet stringent cycle consumption and memory budgets, and was later commercialized in <a href="https://www.mobileworldlive.com/samsung/samsung-launches-lte-modem/">
 Kalmia line of Samsung Multi-mode chipsets</a> between 2009 and 2011. </li>  
   <li>3GPP2 EVDO Standards: I was also part of CDMA EVDO standardization group of Samsung focusing on 
